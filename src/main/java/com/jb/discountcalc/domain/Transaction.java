@@ -80,7 +80,7 @@ public class Transaction {
     this.price = price;
   }
 
-  public BigDecimal getDiscount(){
+  public BigDecimal getDiscount() {
     return discount;
   }
 

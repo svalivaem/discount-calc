@@ -3,7 +3,6 @@ package com.jb.discountcalc.service.pricing;
 import com.jb.discountcalc.domain.Constants;
 import com.jb.discountcalc.domain.Transaction;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class DefaultPricingProcessor implements PricingProcessor {
@@ -26,7 +25,6 @@ public class DefaultPricingProcessor implements PricingProcessor {
         transaction.ignore();
       }
     }
-
     return transactions;
   }
 

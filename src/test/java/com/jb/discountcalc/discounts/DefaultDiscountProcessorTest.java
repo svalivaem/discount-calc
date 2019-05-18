@@ -21,8 +21,6 @@ public class DefaultDiscountProcessorTest {
   public void init() {
     testTransactions = new ArrayList<>();
     defaultDiscountProcessor = new DefaultDiscountProcessor();
-
-
   }
 
   @Test
@@ -379,17 +377,6 @@ public class DefaultDiscountProcessorTest {
             BigDecimal.valueOf(2)
         )
     );
-//    testTransactions.add(
-//        Transaction.create(
-//            10L,
-//            "2015-02-02 S MR",
-//            LocalDate.of(2015, 2, 10),
-//            "S",
-//            "MR",
-//            false,
-//            BigDecimal.valueOf(2)
-//        )
-//    );
 
     testTransactions.add(
         Transaction.create(
@@ -490,17 +477,6 @@ public class DefaultDiscountProcessorTest {
             BigDecimal.valueOf(2)
         )
     );
-//    testTransactions.add(
-//        Transaction.create(
-//            20L,
-//            "2015-02-02 S MR",
-//            LocalDate.of(2015, 3, 10),
-//            "S",
-//            "MR",
-//            false,
-//            BigDecimal.valueOf(2)
-//        )
-//    );
 
     List<Transaction> result = defaultDiscountProcessor.process(testTransactions);
 
@@ -773,6 +749,5 @@ public class DefaultDiscountProcessorTest {
     Assert.assertEquals(BigDecimal.valueOf(0.5), result.get(17).getDiscount());
     Assert.assertEquals(BigDecimal.valueOf(0.5), result.get(18).getDiscount());
     Assert.assertEquals(BigDecimal.valueOf(0.1), result.get(19).getDiscount());
-
   }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class FileIOService implements IOService {
 
-  DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+  private DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
   @Override
   public List<Transaction> receiveTransactions(Object... params) {
@@ -38,11 +38,10 @@ public class FileIOService implements IOService {
     } catch (IOException e) {
       throw new RuntimeException(e.toString());
     }
-
     return parseLines(lines);
   }
 
-  private List<Transaction> parseLines(List<String> lines){
+  private List<Transaction> parseLines(List<String> lines) {
     List<Transaction> transactions = new ArrayList<>();
     //generating unique id's for each transaction
     long id = 1L;

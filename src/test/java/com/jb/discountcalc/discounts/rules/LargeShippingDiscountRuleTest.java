@@ -94,7 +94,7 @@ public class LargeShippingDiscountRuleTest {
 
   @Test
   public void testDiscountThirdTransactionSameDate() {
-    testTransactions.forEach(t->t.setDate(LocalDate.of(2015, 2, 1)));
+    testTransactions.forEach(t -> t.setDate(LocalDate.of(2015, 2, 1)));
     BigDecimal discountBudget = BigDecimal.TEN;
     BigDecimal discount = largeShippingDiscountRule.processTransaction(testTransactions.get(2), testTransactions, discountBudget);
     Assert.assertEquals(BigDecimal.valueOf(6.9), discount);

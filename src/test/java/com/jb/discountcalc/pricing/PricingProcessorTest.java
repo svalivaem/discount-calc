@@ -19,7 +19,7 @@ public class PricingProcessorTest {
   private PricingProcessor pricingProcessor;
 
   @Before
-  public void init(){
+  public void init() {
     pricingProcessor = new DefaultPricingProcessor();
     testTransactions = new ArrayList<>();
 
@@ -105,7 +105,7 @@ public class PricingProcessorTest {
   }
 
   @Test
-  public void testSettingPrices(){
+  public void testSettingPrices() {
     List<Transaction> withPrices = pricingProcessor.process(testTransactions);
     Assert.assertEquals(BigDecimal.valueOf(2), withPrices.get(0).getPrice());
     Assert.assertEquals(BigDecimal.valueOf(3), withPrices.get(1).getPrice());
