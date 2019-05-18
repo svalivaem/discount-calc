@@ -16,7 +16,7 @@ public class Main {
   public static void main(String[] args) {
     String filename = args[0];
     try {
-      if (filename == null) {
+      if (filename == null || filename.trim().equals("")) {
         System.out.println("Invalid filename!");
       }
 
