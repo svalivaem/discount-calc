@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 public class Transaction {
 
@@ -41,6 +40,13 @@ public class Transaction {
   public static Transaction create(long id, String line, LocalDate date, String size, String carrier, boolean ignore, BigDecimal price) {
     Transaction transaction = create(id, line, date, size, carrier, ignore);
     transaction.setPrice(price);
+    return transaction;
+  }
+
+  public static Transaction create(long id, String line, LocalDate date, String size, String carrier, boolean ignore, BigDecimal price,
+                                   BigDecimal discount) {
+    Transaction transaction = create(id, line, date, size, carrier, ignore, price);
+    transaction.applyDiscount(discount);
     return transaction;
   }
 
@@ -105,16 +111,17 @@ public class Transaction {
     this.price = this.price.subtract(discount);
   }
 
+  public void reduceDiscount(BigDecimal discount) {
+    if (discount == null) return;
+    this.discount = this.discount.subtract(discount);
+    this.price = this.price.add(discount);
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Transaction that = (Transaction) o;
     return id == that.id;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id);
   }
 }

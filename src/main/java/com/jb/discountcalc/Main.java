@@ -24,6 +24,7 @@ public class Main {
       IOService ioService = new FileIOService();
       PricingProcessor pricingProcessor = new DefaultPricingProcessor();
       DiscountProcessor discountsProcessor = new DefaultDiscountProcessor();
+      discountsProcessor.initDiscountRules();
 
       //reading data from file
       List<Transaction> transactions = ioService.receiveTransactions(filename);
@@ -42,4 +43,5 @@ public class Main {
       e.printStackTrace();
     }
   }
+
 }

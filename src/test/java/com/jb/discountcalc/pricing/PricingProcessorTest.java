@@ -116,4 +116,5 @@ public class PricingProcessorTest {
     Assert.assertTrue(withPrices.get(6).isIgnored());
     Assert.assertTrue(withPrices.get(7).isIgnored());
   }
+
 }

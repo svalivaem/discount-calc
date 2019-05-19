@@ -36,36 +36,9 @@ public class SmallShippingDiscountRuleTest {
   }
 
   @Test
-  public void testDiscountEnoughBudget() {
-    BigDecimal discountBudget = BigDecimal.TEN;
-    BigDecimal discount = smallShippingDiscountRule.processTransaction(
-        testTransactions.get(0),
-        testTransactions,
-        discountBudget
-    );
-    Assert.assertEquals(BigDecimal.valueOf(0.5), discount);
-  }
-
-  @Test
-  public void testDiscountPartiallyEnoughBudget() {
-    BigDecimal discountBudget = BigDecimal.valueOf(0.25);
-    BigDecimal discount = smallShippingDiscountRule.processTransaction(
-        testTransactions.get(0),
-        testTransactions,
-        discountBudget
-    );
-    Assert.assertEquals(BigDecimal.valueOf(0.25), discount);
-  }
-
-  @Test
-  public void testDiscountNotEnoughBudget() {
-    BigDecimal discountBudget = BigDecimal.ZERO;
-    BigDecimal discount = smallShippingDiscountRule.processTransaction(
-        testTransactions.get(0),
-        testTransactions,
-        discountBudget
-    );
-    Assert.assertNull(discount);
+  public void testDiscount() {
+    smallShippingDiscountRule.processTransactions(testTransactions);
+    Assert.assertEquals(BigDecimal.valueOf(0.5), testTransactions.get(0).getDiscount());
   }
 
 }

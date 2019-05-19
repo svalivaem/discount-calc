@@ -1,6 +1,6 @@
 package com.jb.discountcalc.service.pricing;
 
-import com.jb.discountcalc.domain.Constants;
+import com.jb.discountcalc.domain.Prices;
 import com.jb.discountcalc.domain.Transaction;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class DefaultPricingProcessor implements PricingProcessor {
         continue;
       }
       try {
-        transaction.setPrice(Constants.PRICES.get(transaction.getCarrier())
+        transaction.setPrice(Prices.PRICES.get(transaction.getCarrier())
             .get(transaction.getSize()));
 
         if (transaction.getPrice() == null) {

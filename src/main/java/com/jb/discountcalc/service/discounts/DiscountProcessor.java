@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface DiscountProcessor {
 
+  void initDiscountRules();
+
   List<Transaction> process(List<Transaction> transactions);
 
 }

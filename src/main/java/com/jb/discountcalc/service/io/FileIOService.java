@@ -1,6 +1,6 @@
 package com.jb.discountcalc.service.io;
 
-import com.jb.discountcalc.domain.Constants;
+import com.jb.discountcalc.domain.Prices;
 import com.jb.discountcalc.domain.Transaction;
 
 import java.io.BufferedReader;
@@ -79,7 +79,7 @@ public class FileIOService implements IOService {
   }
 
   private boolean validateAndSetCarrier(Transaction transaction, String carrier) {
-    if (Constants.PRICES.keySet().contains(carrier)) {
+    if (Prices.PRICES.keySet().contains(carrier)) {
       transaction.setCarrier(carrier);
       return true;
     }
@@ -87,10 +87,11 @@ public class FileIOService implements IOService {
   }
 
   private boolean validateAndSetPackageSize(Transaction transaction, String carries, String size) {
-    if (Constants.PRICES.get(carries).keySet().contains(size)) {
+    if (Prices.PRICES.get(carries).keySet().contains(size)) {
       transaction.setSize(size);
       return true;
     }
     return false;
   }
+
 }

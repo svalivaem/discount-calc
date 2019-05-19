@@ -58,45 +58,28 @@ public class LargeShippingDiscountRuleTest {
   }
 
   @Test
-  public void testDiscountEnoughBudget() {
-    BigDecimal discountBudget = BigDecimal.TEN;
-    BigDecimal discount = largeShippingDiscountRule.processTransaction(testTransactions.get(2), testTransactions, discountBudget);
-    Assert.assertEquals(BigDecimal.valueOf(6.9), discount);
-  }
-
-  @Test
-  public void testDiscountPartiallyEnoughBudget() {
-    BigDecimal discountBudget = BigDecimal.valueOf(5);
-    BigDecimal discount = largeShippingDiscountRule.processTransaction(testTransactions.get(2), testTransactions, discountBudget);
-    Assert.assertEquals(BigDecimal.valueOf(5), discount);
-  }
-
-  @Test
-  public void testDiscountNotEnoughBudget() {
-    BigDecimal discountBudget = BigDecimal.ZERO;
-    BigDecimal discount = largeShippingDiscountRule.processTransaction(testTransactions.get(2), testTransactions, discountBudget);
-    Assert.assertNull(discount);
+  public void testDiscount() {
+    largeShippingDiscountRule.processTransactions(testTransactions);
+    Assert.assertEquals(BigDecimal.valueOf(6.9), testTransactions.get(2).getDiscount());
   }
 
   @Test
   public void testDiscountThirdTransaction() {
-    BigDecimal discountBudget = BigDecimal.TEN;
-    BigDecimal discount = largeShippingDiscountRule.processTransaction(testTransactions.get(2), testTransactions, discountBudget);
-    Assert.assertNotNull(discount);
+    largeShippingDiscountRule.processTransactions(testTransactions);
+    Assert.assertNotNull(testTransactions.get(2).getDiscount());
   }
 
   @Test
   public void testDiscountNotThirdTransaction() {
-    BigDecimal discountBudget = BigDecimal.TEN;
-    BigDecimal discount = largeShippingDiscountRule.processTransaction(testTransactions.get(1), testTransactions, discountBudget);
-    Assert.assertNull(discount);
+    largeShippingDiscountRule.processTransactions(testTransactions);
+    Assert.assertNull(testTransactions.get(1).getDiscount());
   }
 
   @Test
   public void testDiscountThirdTransactionSameDate() {
     testTransactions.forEach(t -> t.setDate(LocalDate.of(2015, 2, 1)));
-    BigDecimal discountBudget = BigDecimal.TEN;
-    BigDecimal discount = largeShippingDiscountRule.processTransaction(testTransactions.get(2), testTransactions, discountBudget);
-    Assert.assertEquals(BigDecimal.valueOf(6.9), discount);
+    largeShippingDiscountRule.processTransactions(testTransactions);
+    Assert.assertEquals(BigDecimal.valueOf(6.9), testTransactions.get(2).getDiscount());
   }
+
 }
