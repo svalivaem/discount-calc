@@ -156,7 +156,7 @@ public class MonthlyDiscountBudgetRuleTest {
             "MR",
             false,
             BigDecimal.valueOf(2),
-            BigDecimal.valueOf(0.1)
+            BigDecimal.valueOf(0.5)
         )
     );
 
