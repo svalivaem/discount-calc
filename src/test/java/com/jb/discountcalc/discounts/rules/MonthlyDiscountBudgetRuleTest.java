@@ -21,10 +21,7 @@ public class MonthlyDiscountBudgetRuleTest {
   public void init() {
     testTransactions = new ArrayList<>();
     monthlyDiscountBudgetRule = new MonthlyDiscountBudgetRule();
-  }
 
-  @Test
-  public void testEnoughBudgetForAllDiscounts() {
     testTransactions.add(
         Transaction.create(
             1L,
@@ -131,7 +128,10 @@ public class MonthlyDiscountBudgetRuleTest {
             BigDecimal.valueOf(0.5)
         )
     );
+  }
 
+  @Test
+  public void testEnoughBudgetForAllDiscounts() {
     monthlyDiscountBudgetRule.processTransactions(testTransactions);
 
     Assert.assertEquals(BigDecimal.valueOf(0.5), testTransactions.get(0).getDiscount());
@@ -147,112 +147,6 @@ public class MonthlyDiscountBudgetRuleTest {
 
   @Test
   public void testNotEnoughBudgetForAllDiscounts() {
-    testTransactions.add(
-        Transaction.create(
-            1L,
-            "2015-02-01 S MR",
-            LocalDate.of(2015, 2, 1),
-            "S",
-            "MR",
-            false,
-            BigDecimal.valueOf(2),
-            BigDecimal.valueOf(0.5)
-        )
-    );
-    testTransactions.add(
-        Transaction.create(
-            2L,
-            "2015-02-02 S MR",
-            LocalDate.of(2015, 2, 2),
-            "S",
-            "MR",
-            false,
-            BigDecimal.valueOf(2),
-            BigDecimal.valueOf(0.5)
-        )
-    );
-    testTransactions.add(
-        Transaction.create(
-            3L,
-            "2015-02-02 L LP",
-            LocalDate.of(2015, 2, 3),
-            "L",
-            "LP",
-            false,
-            BigDecimal.valueOf(6.9)
-        )
-    );
-    testTransactions.add(
-        Transaction.create(
-            4L,
-            "2015-02-02 L LP",
-            LocalDate.of(2015, 2, 4),
-            "L",
-            "LP",
-            false,
-            BigDecimal.valueOf(6.9)
-        )
-    );
-    testTransactions.add(
-        Transaction.create(
-            5L,
-            "2015-02-02 L LP",
-            LocalDate.of(2015, 2, 5),
-            "L",
-            "LP",
-            false,
-            BigDecimal.valueOf(6.9),
-            BigDecimal.valueOf(6.9)
-        )
-    );
-    testTransactions.add(
-        Transaction.create(
-            6L,
-            "2015-02-02 S MR",
-            LocalDate.of(2015, 2, 6),
-            "S",
-            "MR",
-            false,
-            BigDecimal.valueOf(2),
-            BigDecimal.valueOf(0.5)
-        )
-    );
-    testTransactions.add(
-        Transaction.create(
-            7L,
-            "2015-02-02 S MR",
-            LocalDate.of(2015, 2, 7),
-            "S",
-            "MR",
-            false,
-            BigDecimal.valueOf(2),
-            BigDecimal.valueOf(0.5)
-        )
-    );
-    testTransactions.add(
-        Transaction.create(
-            8L,
-            "2015-02-02 S MR",
-            LocalDate.of(2015, 2, 8),
-            "S",
-            "MR",
-            false,
-            BigDecimal.valueOf(2),
-            BigDecimal.valueOf(0.5)
-        )
-    );
-    testTransactions.add(
-        Transaction.create(
-            9L,
-            "2015-02-02 S MR",
-            LocalDate.of(2015, 2, 9),
-            "S",
-            "MR",
-            false,
-            BigDecimal.valueOf(2),
-            BigDecimal.valueOf(0.5)
-        )
-    );
     testTransactions.add(
         Transaction.create(
             10L,
